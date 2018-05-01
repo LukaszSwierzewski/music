@@ -23,8 +23,8 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(override("_method"));
-mongoose.connect('mongodb://localhost/plyty_nowe2');
-// mongoose.connect('mongodb://luki:luki@ds111370.mlab.com:11370/musicdb')
+// mongoose.connect('mongodb://localhost/plyty_nowe2');
+mongoose.connect('mongodb://lukasz:lukasz@ds111370.mlab.com:11370/musicdb')
 app.use(flash()); 
 // seedDB();
 //wylacz funkcje seedDB znajdująca się seeds.js
