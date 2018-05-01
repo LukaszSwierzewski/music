@@ -1,0 +1,43 @@
+<% include partials/header.ejs %>
+
+<div class='container'>
+    <div class='row'>
+<div class="col-md-8 col-sm-6 ">
+   <% if (currentUser && currentUser.isAdmin) { %>
+    <form action="/index/arty/<%= art.id%>?_method=DELETE" method="POST">
+         <button class="btn btn-danger btn-lg">Usuń post</button>
+         </form>
+        <% } %>
+    <h2 class='text-center'><%= art.name1 %></h2>
+    <h3 class='text-center' ><%= art.opis1.substring(0, 80)%> </h3>
+ <img id="dod" class='img-responsive' src="<%= art.image1%>">
+<em> <%= moment(art.createdAt).format('MMMM Do YYYY');%></em>  
+<br>
+<em><%= moment(art.createdAt).fromNow(); %></em>
+<p class="text-justify paddingP"><%= art.opis1%><p>
+</div>
+<div class="col-md-2 col-sm-2 plyty text-center margin innerMenu">
+    <h3 class='fontColor'>POZOSTAŁE</h3>
+<% for(var i = 1; i < 5; i++) {%>
+
+      <div class='zoom fontColor'>
+<!--<div id="article" class="col-md-8 col-sm-6"> W BUDOWIE KURWA</div>-->
+           <div style="background-image: url(<%= moreArt[i].image1 %>); background-size: 240px 240px; background-repeat: no-repeat;" id="rownyI" class='thumbnail'> 
+              
+               <div class="caption center-block">
+    <h4 class='fontColor1'> <%= moreArt[i].name1 %> </h4>
+    <h4 class='fontColor1'> <%= moment(moreArt[i].createdAt).fromNow() %> </h4>
+    
+    <a href="/index/arty/<%= moreArt[i]._id %>" class="btn btn-info" >Wiecej inforamcji</a>
+    
+</div>
+
+</div> <!-- col -->
+</div>
+
+
+<% } %>
+</div>
+</div>
+</div>
+<% include partials/footer.ejs %>

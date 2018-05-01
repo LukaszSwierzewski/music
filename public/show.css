@@ -1,0 +1,130 @@
+.thumbnail img {
+    width: 100%;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+}
+
+#rownyH {
+    height: 320px;
+   
+    
+}
+#rownyI {
+    width: 240px;
+    height: 240px;
+   
+    
+}
+
+#rownyA {
+    width: 500px;
+    height: 320px;
+}
+   
+
+#textA {
+  width: 300px;
+  height: 200px;
+  resize: none;
+}
+
+#delete-form {
+    display: inline;
+}
+.caption {
+    margin-top: 150px;
+}
+.red {
+    background-color: white;
+}
+
+.paddingP {
+    font-size: 18px;
+    font-weight: 300;
+    margin-top: 40px;
+    color: #2f374d;
+}
+
+#lab_social_icon_footer {
+  padding: 40px 0;
+  background-color: #dedede;
+}
+
+#lab_social_icon_footer a {
+  color: #333;
+}
+
+#lab_social_icon_footer .social:hover {
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -o-transform: scale(1.1);
+}
+
+#lab_social_icon_footer .social {
+  -webkit-transform: scale(0.8);
+  /* Browser Variations: */
+  
+  -moz-transform: scale(0.8);
+  -o-transform: scale(0.8);
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+}
+/*
+    Multicoloured Hover Variations
+*/
+
+#lab_social_icon_footer #social-fb:hover {
+  color: #3B5998;
+}
+
+#lab_social_icon_footer #social-tw:hover {
+  color: #4099FF;
+}
+
+#lab_social_icon_footer #social-gp:hover {
+  color: #d34836;
+}
+
+#lab_social_icon_footer #social-em:hover {
+  color: #f39c12;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+}
+.avatar1 {
+  width: 30px;
+  height: 30px;
+}
+
+.zoom:hover {
+    transform: scale(1.05);
+    opacity: 0.95;
+    transition-duration: 0.5s;/* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+@media only screen and (max-width: 720px) {
+    .plyty {
+        display: none;
+    }
+}
+
+.margin {
+  margin-bottom: 40px;
+}
+
+.heightImg {
+  height: 320px !important;
+}

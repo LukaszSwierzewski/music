@@ -1,0 +1,290 @@
+<% include partials/header.ejs %>
+<div class='container'>
+    <div class='row'>
+        <div class='col-md-3'>
+            <p class='lead'>MusicBook</p>
+            <div class="list-group">
+               <a class='jsa' href="#"> <li class="list-group-item act1">Teledyski</li></a>
+               <div class='znikaj' id='znikaj'>
+               <iframe width="262.5" height="140" frameborder="0" allowfullscreen
+src="https://www.youtube.com/embed/<%=foundPlyta.youtube%>">
+</iframe>
+               </div>
+                <a class='jsa1'> <li class="list-group-item act2">Track list:</li></a>
+                  <div class='znikaj1' id='znikaj'>
+               <p><%=foundPlyta.track1%></p>
+               <p><%=foundPlyta.track2%></p>
+               <p><%=foundPlyta.track3%></p>
+               <p><%=foundPlyta.track4%></p>
+               <p><%=foundPlyta.track5%></p>
+               <p><%=foundPlyta.track6%></p>
+               <p><%=foundPlyta.track7%></p>
+               <p><%=foundPlyta.track8%></p>
+               <p><%=foundPlyta.track9%></p>
+               <p><%=foundPlyta.track10%></p>
+               <p><%=foundPlyta.track11%></p>
+               <p><%=foundPlyta.track12%></p>
+               <p><%=foundPlyta.track13%></p>
+               <p><%=foundPlyta.track14%></p>
+               <p><%=foundPlyta.track15%></p>
+               <p><%=foundPlyta.track16%></p>
+               
+               </div>
+                   <a class='jsa2'> <li class="list-group-item act3">Informacje o artyście</li></a>
+                  <div class='znikaj2' id='znikaj'>
+               <a href="https://www.facebook.com/bootsnipp"><i id="social-fb" class="fab fa-facebook-square fa-4x social"></i></a>
+	            <a href="https://twitter.com/bootsnipp"><i id="social-tw" class="fab fa-instagram fa-4x social"></i></a>
+	            <a href="https://plus.google.com/+Bootsnipp-page"><i id="social-gp" class="fab fa-google-plus-square fa-4x social"></i></a>
+	            <a href="mailto:#"><i id="social-em" class="fa fa-envelope-square fa-4x social"></i></a>
+               </div>
+            </div>
+    </div>
+    <div class='col-md-9'>
+    <div class='thumbnail'>
+        <div class='text-right'>
+        <% if(currentUser && foundPlyta.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+            <a class='btn btn-warning btn-lg' href="/index/<%= foundPlyta._id%>/edit">Edytuj post</a>
+<div class='text-left usuun'>
+<form action="/index/<%= foundPlyta._id%>?_method=DELETE" method="POST">
+         <button class="btn btn-danger btn-lg">Usuń post</button>
+         </form>
+         </div>
+<% } %> 
+        </div>
+        <img id="dod" class='img-responsive' src="<%= foundPlyta.image%>">
+        <div class='caption-full'>
+            <h4 class='pull-right'> <%=foundPlyta.price %> zł </h4>
+            <h2><a><%= foundPlyta.name %></a></h2>
+            <p><%= foundPlyta.opis %></p>
+           <em> <p>Stworzone przez <a href='/users/<%=foundPlyta.author.id%>'><%= foundPlyta.author.username %></a> <%= moment(foundPlyta.createdAt).fromNow() %></em></p> </em>
+        <% var total = 0 %>
+           <% for(var i = 0; i < foundPlyta.comments.length; i++) {%>
+        <% total += foundPlyta.comments[i].rating; %>
+          <% }; %>
+        <%  var avg = total / foundPlyta.comments.length; %>
+         <% if(avg > 4.5 ) { %>
+         <div class='rating5'>
+           ŚREDNIA OCENA <%= avg %>
+      <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+      </div>
+        <% } %>
+    
+        <% if(avg > 3.5 && avg <= 4.5 ) { %>
+         <div class='rating4'>
+           ŚREDNIA OCENA ALBUMU <%= avg %>
+      <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+      </div>
+        <% } %>
+          <% if(avg > 2.5 && avg <= 3.5 ) { %>
+         <div class='rating3'>
+           ŚREDNIA OCENA ALBUMU <%= avg %>
+      <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+      </div>
+        <% } %>
+          <% if(avg > 1.5 && avg <= 2.5 ) { %>
+         <div class='rating2'>
+           ŚREDNIA OCENA ALBUMU <%= avg %>
+      <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+      </div>
+        <% } %>
+          <% if(avg > 0.99 && avg <= 1.5 ) { %>
+         <div class='rating1'>
+           ŚREDNIA OCENA ALBUMU <%= avg %>
+      <span class="glyphicon glyphicon-star"></span>
+      </div>
+        <% } %>
+        <em>Ilość głosów: <%= foundPlyta.comments.length %> </em>
+        
+        
+        
+        
+        
+        </div>
+        
+
+    </div>
+      <div class="well">
+      <!--Setting up the add new comment button that is used for collapsing-->
+      <div class="text-right">
+        <a class="btn btn-success pull-right" role="button" data-toggle="collapse" href="#collapseComment" aria-expanded="false" aria-controls="collapseComment">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Dodaj nowy komentarz</a>
+      </div>
+
+      <!--Comment section title-->
+      <h4><strong>Komentarze<span class="glyphicon glyphicon glyphicon-comment" aria-hidden="true"></span></strong></h4>
+
+      <!--Collapse Add a comment form START-->
+      <div class="collapse" id="collapseComment">
+        <div class="well" style="border-left: 5px solid #00C851;">
+            <% if(!currentUser) { %>
+          <!--If the user is not logged in, direct him to the login page-->
+          <h5>Musisz być zalogowany aby dodać komentarz. <a href="/login">Zaloguj</a> się tutaj</h5>
+            <% } %>
+            <% if(currentUser) { %>
+          <!--If the user is logged in, show the new comment form-->
+          <h4>Tekst komentarza <span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span></h4>
+          <form id="add-comment-form" action="/index/<%= foundPlyta._id %>/comments" method="POST">
+            <div class="form-group">
+              <input class="form-control" type="text" disabled value="<%= currentUser.username %>">
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="comment[text]" placeholder="Napisz komentarz..." form="add-comment-form" rows="5" cols="70"></textarea>
+              <br>
+<p>Twoja ocena płyty</p>     
+              <fieldset class="rating">
+
+  <input type="radio" id="star5" name="comment[rating]" value="5" />
+  <label for="star5">Bardzo dobra</label>
+  <input type="radio" id="star4" name="comment[rating]" value="4" />
+  <label for="star4">Dobra</label>
+  <input type="radio" id="star3" name="comment[rating]" value="3" />
+  <label for="star3">Średnia</label>
+  <input type="radio" id="star2" name="comment[rating]" value="2" />
+  <label for="star2">Słaba</label>
+  <input type="radio" id="star1" name="comment[rating]" value="1" />
+  <label for="star1">Bardzo słaba</label>
+</fieldset>
+
+<div id="choice"></div>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-success btn-sm">Dodaj<span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button>
+            </div>
+          </form>
+            <% } %>
+        </div>
+      </div>
+      <!--Collapse Add a comment form END-->
+
+      <hr>
+
+      <!--Check if there are comments, if there are none say no comments.-->
+        <% if (foundPlyta.comments.length === 0) { %>
+      <em style="color: grey;">Brak komentarzy</em>
+        <% } %>
+
+      <!--Display comments by looping through them-->
+        <% foundPlyta.comments.forEach(function(comment) { %>
+      <div class="row">
+        <div class="col-md-12">
+          <strong>
+            <!--If the current user owns the comment, change the color of the user icon-->
+            <% if (comment.author.avatar) { %>
+            <img class='avatar1' src="<%=comment.author.avatar%>">
+            <%  } else { %>
+           <span style="color: orange;" class="glyphicon glyphicon-user" aria-hidden="true"></span>
+           <% } %>
+            <!--Else just display it black-->
+            
+          
+            <!--Print out the author username-->
+              <a href='/users/<%=comment.author.id%>'><%= comment.author.username %></a>
+              
+              <% if(comment.rating === 5) { %>
+              <div class="rating5">
+              OCENA:<span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+      </div>
+      <% } %>
+      <% if(comment.rating ===4) { %>
+      <div class='rating4'>
+      OCENA:<span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+      </div>
+      <% } %>
+      
+      <% if(comment.rating ===3) { %>
+      <div class='rating3'>
+      OCENA:<span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+      </div>
+      <% } %>
+      <% if(comment.rating ===2) { %>
+      <div class='rating2'>
+      OCENA:<span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+      </div>
+      <% } %>
+      <% if(comment.rating ===1) { %>
+      <div class='rating1'>
+      OCENA:<span class="glyphicon glyphicon-star"></span>
+      </div>
+      <% } %>
+              </strong>
+          </strong>
+          <!--Show when the comment was made-->
+          <span class="pull-right"><%= moment(comment.createdAt).fromNow() %></span>
+          <!--Printing the comment-->
+          <p><%= comment.text %></p>
+          
+        
+          <!--If the visitor is logged in and the owner of the comment, show the edit and delete buttons-->
+             <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+          <!--Edit button used for collapsing the edit comment form-->
+          <a class="btn btn-xs btn-warning" role="button" data-toggle="collapse" href="#collapseEdit<%= comment._id %>" aria-expanded="false" aria-controls="collapse<%= comment._id %>">
+            Edytuj</a>
+          <!--Delete comment button-->
+          <form id="delete-form" action="/index/<%= foundPlyta._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST" style="display: inline;">
+            <button class="btn btn-xs btn-danger">Usuń</button>
+          </form>
+          <!--Edit comment form-->
+          <div class="collapse" id="collapseEdit<%= comment._id %>">
+            <div class="well" style="border-left: 5px solid #ffbb33; margin-top: 15px;">
+              <h4>Edytuj komentarz<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></h4>
+              <form id="edit-comment-form" action="/index/<%= foundPlyta._id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
+                <div class="form-group">
+                  <input class="form-control" type="text" disabled value="<%= currentUser.username %>">
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name="comment[text]" placeholder="Test komentarza" form="edit-comment-form" rows="5" cols="70"><%= comment.text %></textarea>
+                  
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-warning btn-sm">Edytuj<span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button>
+                </div>
+              </form>
+            </div>
+          </div>
+            <% } %>
+          <hr>
+        </div>
+      </div>
+        <% }) %>
+    </div>
+</div>
+</div>
+</div>
+
+
+
+});
+<script>
+// document.getElementById("jsa").addEventListener("click", function toffi(){
+//   var sw = document.getElementById("znikaj");
+//   if (sw.style.display === "block") {
+//     sw.style.display = "none";
+//   } else {
+//     sw.style.display = "block";
+//   }
+// });
+$('.jsa').click(function(){
+$('.znikaj').fadeToggle();
+$(".act1").toggleClass("active");
+
+});
+$('.jsa1').click(function(){
+$('.znikaj1').fadeToggle();
+$(".act2").toggleClass("active");
+
+});
+$('.jsa2').click(function(){
+$('.znikaj2').fadeToggle();
+$(".act3").toggleClass("active");
+
+});
+
+$('.rating input').change(
+  function() {
+    $('#choice').text(this.value);
+  }
+)
+
+
+</script>
+<% include partials/footer.ejs %>

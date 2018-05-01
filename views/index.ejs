@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>POLSKI RAP STRONG</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css.css">
+    <link rel='stylesheet' href='/show.css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/landing1.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript" async></script>
+</head>
+
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+    <div id="landing-header1">
+          <nav id="nav" class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/index"><i class="far fa-image fa-1x"></i>
+                        Strona główna</a>
+                  </div>
+              
+                  <!-- Collect the nav links, forms, and other content for toggling -->
+                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                
+                   
+                    <ul class="nav navbar-nav navbar-right">
+                    <% if(!currentUser) { %>
+                     <li class='search'> <form action='/record' method='get' class='form-inline'>
+                            <div class='form-group'>
+                                <input type='text' name='search' placeholder='Szukaj płyty' class='form-control'>
+                            
+                            </div>
+                        </form>
+                </li>
+              
+                        <li><a href="/record">Menu płyt</a></li>
+                        <li><a href="/login"><i class="fas fa-sign-in-alt fa-1x"></i>
+                        
+                        Zaloguj się</a></li>
+                         <li><a href="/register"><i class="fas fa-user-plus fa-1x"></i>
+                        
+                        Zarejestruj się</a></li>
+                        <% } else { %>
+                          <li class='search'> <form action='/record' method='get' class='form-inline'>
+                            <div class='form-group'>
+                                <input type='text' name='search' placeholder='Szukaj płyty' class='form-control'>
+                            
+                            </div>
+                        </form>
+                </li>
+                        <li><a href="/record">Menu płyt</a></li>
+                        <li id='problem'><a href='/users/<%=currentUser._id%>'>
+                            
+                            <% if(currentUser.avatar) { %>
+                            <img class='avatar1' src="<%=currentUser.avatar%>">
+                            <% } else { %>
+                            <span style="color: orange;" class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                            <% } %>
+                            
+                            
+                            
+                            Zalogowany(<%= currentUser.username %>)</a></li>
+                         <li><a href="/logout"><i class="fas fa-sign-out-alt fa-1x"></i>Wyloguj</a></li>
+                      <%  } %>
+                    
+                  </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+                </div>
+             
+        </div> <!-- container fluid-->
+    </nav>
+    <div id='landing-header3' class='container'>
+        <% if(success && success.length > 0) {  %> <!-- error>length sprawdza czy jest cos w srodku -->
+    <div class='alert alert-success' role='alert'>
+    <%= success %>
+    </div>
+    <% } else if(error && error.length >0) {  %>
+     <div class='alert alert-danger' role='alert'>
+    <%= error %>
+    </div>
+    <% } else if(edit && edit.length >0) {  %>
+     <div class='alert alert-info' role='alert'>
+    <%= edit %>
+    <% } %>
+    </div>
+    </div>
+</div>
+</div>
+    
+
+
+<div id="push">
+</div>
+    
+    <ul class="slideshow">
+      <li></li>
+     
+    </ul>
+    </div>
+        </div>
+        
+        
+        
+<!-- The scrollable area -->
+
+<!-- The navbar - The <a> elements are used to jump to a section in the scrollable area -->
+
+         <div id="landing-header5">
+        <div class='container-fluid innerMenu'>
+            <h1>OSTATNIO DODANE PŁYTY</h1>
+             <h3>
+                                Pomóż nam i dodaj nową płytę</h3>
+
+                               <a class="btn btn-primary btn-large" href="/index/new">Dodaj nową płyte</a>
+                                <a class="btn btn-primary btn-large" href="/record">Baza płyt</a>
+<br>
+<br>
+<br>
+        <div class="row">
+
+
+
+    <% for(var i = 0; i < 6; i++) {%>
+   
+
+   <div class="col-md-2 col-sm-4 plyty text-center margin innerMenu">
+      <div class='zoom'>
+<!--<div id="article" class="col-md-8 col-sm-6"> W BUDOWIE KURWA</div>-->
+           <div style="background-image: url(<%= albumy[i].image %>); background-size: 240px 240px; background-repeat: no-repeat;" id="rownyI" class='thumbnail circle'> 
+              
+               <div class="caption center-block">
+    <h4> <%= albumy[i].name %> </h4>
+    <h4> <%= moment(albumy[i].createdAt).fromNow() %> </h4>
+    
+    <a href="/index/<%= albumy[i]._id %>" class="btn btn-info" >Wiecej inforamcji</a>
+    
+</div>
+
+</div> <!-- col -->
+</div>
+</div>
+
+<% } %>
+
+</div> <!-- row-->
+</div>
+</div>
+
+
+ <div id="landing-header5">
+        <div class='container-fluid innerMenu1'>
+            <h1>N E W S Y</h1>
+            <br>
+           
+            <div class='menu2'>
+            <a href="/record">POLECANE</a>
+            <a href="/record">NEWSY MUZYCZNE</a>
+            <a href="/record">WYDARZENIA</a>
+            <a href="/record">MAGAZYN</a>
+            </div>
+            </div>
+            </div>
+<section>
+        <figure>  
+    <div id='marginee' class="container">
+<div class="row">
+    <% for(var i = 0; i < 1; i++) {%>
+
+
+    <div class="col-md-12 col-sm-12 margin">
+    <div class='zoom'>
+    <a id='whitee' href="/index/arty/<%=art[i]._id%>">
+       
+        <img src="<%= art[i].image1%>" class="img-responsive heightImg1" alt="" />
+         
+    
+           <figcaption class='content'>
+           <em> <%= moment(art[i].createdAt).format('MMMM Do YYYY');%> </em>  
+           <br>
+          <em><%= moment(art[i].createdAt).fromNow(); %></em>
+	     <div class='text-center'>
+    <h1><%= art[i].name1.substring(0, 200) %> </h1>
+ 
+    </div>
+    <figcaption>
+  </div>
+            
+       
+    </a>
+   </div>
+
+    <% }; %>
+       </div> <!-- row-->
+</div> <!--container-->
+</figure>
+</section>
+
+    <div class="container">
+<div class="row">
+    <% for(var i = 1; i < art.length; i++) {%>
+
+
+    <div class="col-md-4 col-sm-6 margin">
+    <div class='zoom'>
+    <a href="/index/arty/<%=art[i]._id%>">
+       
+        <img src="<%= art[i].image1%>" class="img-responsive heightImg" alt="" />
+        
+         <div class="content text-left">
+           <em> <%= moment(art[i].createdAt).format('MMMM Do YYYY');%> </em>  
+           <br>
+          <em><%= moment(art[i].createdAt).fromNow(); %></em>
+	     <div class='text-center'>
+    <h3><%= art[i].name1.substring(0, 200) %> </h3>
+    <p><%= art[i].opis1.substring(0, 200) %></p>
+    </div>
+  </div>
+  </div>
+            
+    </a>
+   </div>
+
+    <% }; %>
+       </div> <!-- row-->
+</div> <!--container-->
+
+ 
+        
+
+
+
+  
+
+
+<% include partials/footer %>

@@ -1,0 +1,28 @@
+<% include partials/header.ejs %>
+<div class="container">
+<h2 class="form-group newejs">Dodaj nową płyte</h2>
+<div class="col-md-4 col-md-offset-4">
+<form action="/index/art", method="POST">
+   <div class='form-group'>
+    <input class="form-control" type="text" name='name1' placeholder="tytul artykułu">
+    </div>
+     <div class='form-group'>
+    <input class="form-control" type="text" name='image1' placeholder="Obraz">
+    </div> 
+    <div class='form-group'>
+    <div class="form-group">
+    <textarea id="textA" class="form-control" type="text" name='opis1'></textarea>
+    </div>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block">Wyślij</button>
+    
+
+    
+</form>
+
+
+<p class='newejse'><a href="/index">Powrót</a></p>
+</div>
+
+</div>
+<% include partials/footer.ejs %>

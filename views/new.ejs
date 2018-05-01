@@ -1,0 +1,55 @@
+<% include partials/header.ejs %>
+<div class="container">
+<h2 class="form-group newejs">Dodaj nową płyte</h2>
+<div class="col-md-4 col-md-offset-4">
+    <form action="/index/lala" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="text">Artysta oraz nazwa płyty</label>
+                    <input class="form-control" type="text" name="campground[name]" placeholder="Nazwa">
+                </div>
+                <div class="form-group">
+                    <label for="image">Obraz</label>
+                    <input type="file" id="image" name="image" accept="image/*" required>
+                </div>
+                <div class="form-group">
+                    <label for="opis">Opis płyty</label>
+    <textarea id="textA" class="form-control" type="text" name='campground[opis]'></textarea>
+    </div>
+                <div class="form-group">
+                    <label for="opis">Średnia cena płyty</label>
+                    <input class="form-control" type="number" name="campground[price]" placeholder="Cena">
+                </div>
+                 <div class="form-group">
+                    <label for="opis">Promo na youtube</label>
+                    <input class="form-control" type="text" name="campground[youtube]" placeholder="link">
+                </div>
+                <div class="form-group">
+                    <label for="opis">Track lista:</label>
+                    <input class="form-control" type="text" name="campground[track1]" placeholder="1">
+                    <input class="form-control" type="text" name="campground[track2]" placeholder="2">
+                    <input class="form-control" type="text" name="campground[track3]" placeholder="3">
+                    <input class="form-control" type="text" name="campground[track4]" placeholder="4">
+                    <input class="form-control" type="text" name="campground[track5]" placeholder="5">
+                    <input class="form-control" type="text" name="campground[track6]" placeholder="6">
+                    <input class="form-control" type="text" name="campground[track7]" placeholder="7">
+                    <input class="form-control" type="text" name="campground[track8]" placeholder="8">
+                    <input class="form-control" type="text" name="campground[track9]" placeholder="9">
+                    <input class="form-control" type="text" name="campground[track10]" placeholder="10">
+                    <input class="form-control" type="text" name="campground[track11]" placeholder="11">
+                    <input class="form-control" type="text" name="campground[track12]" placeholder="12">
+                    <input class="form-control" type="text" name="campground[track13]" placeholder="13">
+                    <input class="form-control" type="text" name="campground[track14]" placeholder="14">
+                    <input class="form-control" type="text" name="campground[track15]" placeholder="15">
+                    <input class="form-control" type="text" name="campground[track16]" placeholder="16">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Wyślij</button>
+                </div>
+            </form>
+
+
+<p class='newejse'><a href="/index">Powrót</a></p>
+</div>
+</div>
+</div>
+<% include partials/footer.ejs %>

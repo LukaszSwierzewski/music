@@ -1,0 +1,223 @@
+
+body {
+font-family: "Courier New", Courier, monospace;
+}
+.jumbotron {
+    color: #2c3e50;
+    background: #ecf0f1;
+}
+
+.wyrownanie {
+    text-align: center;
+    padding-top: 30%;
+    padding-bottom: 10%;
+
+}
+h1 {
+    
+    font-weight: 700;
+    font-size: 5em;
+    text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+}
+h3 {
+    
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+hr {
+    width: 400px;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.centerForm {
+    text-align: center;
+    margin: 10px auto 10px auto;
+}
+
+.newejs {
+    text-align: center;
+    padding-top: 20px;
+}
+.newejse {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.newejses {
+    text-align: center;
+    margin-top: 10px;
+    color: green;
+}
+
+#chuj {
+    margin: auto;
+}
+
+.center {
+    text-align: center;
+}
+.usuun {
+    float: left;
+}
+
+.nav>li>a {
+    padding-top: 10px;
+}
+#delete-form {
+    display: inline;
+}
+.bakgrud {
+    color: white;
+}
+
+
+
+.centerForm {
+    text-align:center;
+}
+
+hr {
+    width: 100%;
+}
+.innerMenu {
+    color: white;
+}
+
+
+
+
+
+.innerMenu1 {
+    background-color: black;
+    color: white;
+    padding: 30px;
+    opacity: 0.9;
+   
+    margin-bottom: -50px;
+}
+.menu2 {
+    text-decoration: none;
+    font-size: 1.5em;
+}
+.menu2 a {
+    margin: 20px;
+    color: white;
+}
+.menu2 a:hover {
+    color: RGB(234, 179, 11);
+    transition-duration: 0.1s;
+}
+
+.search input {
+   margin-top: 10px;
+}
+#margin1 {
+    margin: 100px !important; 
+}
+
+
+.znikaj {
+    display: none;
+}
+.znikaj1 {
+    display: none;
+    font-size: 12px;
+
+}
+.znikaj2 {
+    display: none;
+    
+}
+jsa1 {
+    cursor: pointer;
+}
+a {
+    text-decoration: none!important;
+    cursor: pointer!important;
+   
+}
+
+
+#whitee {
+    color: white;
+}
+#marginee {
+    margin-top: 50px;
+}
+heightImg1 {
+    height: 500px;
+}
+
+.pull-center {
+    margin-left: 20%;
+}
+
+.rating {
+  float: left;
+  border: none;
+}
+.rating:not(:checked) > input {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+.rating:not(:checked) > label {
+  float: right;
+  width: 1em;
+  padding: 0 .1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 200%;
+  line-height: 1.2;
+  color: #ddd;
+}
+.rating:not(:checked) > label:before {
+  content: '★ ';
+}
+.rating > input:checked ~ label {
+  color: #f70;
+}
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: gold;
+}
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  color: #ea0;
+}
+.rating > label:active {
+  position: relative;
+}
+
+.rating5 {
+    color: green;
+}
+
+.rating4 {
+    color: rgb(153, 153, 0);
+}
+.rating3 {
+    color: rgb(153, 156, 0);
+}
+.rating2 {
+    color: rgb(153, 82, 0);
+}
+.rating1 {
+    color: red;
+}
+
+.fontColor {
+    color: black;
+}
+
+.fontColor1 {
+    color: white;
+}

@@ -1,0 +1,40 @@
+<% include ../partials/header %>
+<div class='container'>
+    <div class='row'>
+    <div class='col-md-4'>
+        <h2><%= user.firstName + " " + user.lastName%></h2>
+        
+        <img id='dod' class='img-responsive' src=<%=user.avatar %>>
+        
+        </div>
+       
+        <div class='col-md-6'>
+            <% if(currentUser && user._id.equals(currentUser._id)) { %>
+            <a href='/users/<%=user._id%>/edit' class='btn btn-primary'>Edytuj informacje</a>
+            <% } %>
+             <br>
+             <br><br>
+            <p>Nick: <strong><%= user.username%></p></string>
+            <p>Mail: <strong><%=user.email%></p></strong>
+            <p>posty użytkownika <%=user.username%>: <span class='pull-right'>Stworzone:</span></p>
+            <br>
+            <% plyty.forEach(function(plyta){ %>
+            <ul>
+            <li><a href='/index/<%=plyta._id%>'><%= plyta.name %></a> <span class='pull-right'> <%= moment(plyta.createdAt).format('MMMM Do YYYY')%></span></li> 
+            </ul>
+            <% }); %>
+            <p><%= comment %></p>
+          
+            <% comment.forEach(function(comment){ %>
+<li><%=comment%></li>
+<% console.log(comment)%>
+                
+                
+            <% }); %>
+        </div>
+        
+        
+    </div> <!--row-->
+</div> <!-- container -->
+
+<% include ../partials/footer %>
